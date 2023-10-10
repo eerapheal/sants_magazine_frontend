@@ -216,6 +216,14 @@
       list-style: none;
       position: relative;
     }
+
+    .navLinksBtn {
+      background-color: #19c37d;
+      border: none;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 400;
+    }
   
     .navlinks a {
       text-decoration: none;

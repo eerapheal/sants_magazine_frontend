@@ -1,10 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 import "./Header.css";
+
 const Header = () => {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const updateUserInfo = useCallback(
+    (userData) => {
+      setUserInfo(userData);
+    },
+    [setUserInfo]
+  );
 
   useEffect(() => {
     fetch("http://localhost:4000/profile", {
@@ -15,13 +23,9 @@ const Header = () => {
         updateUserInfo(userData);
       })
       .catch((error) => {
-        console.error("Error retrieving user profile:", error);
+        throw new Error("Error retrieving user profile:", error);
       });
-  }, []);
-
-  const updateUserInfo = (userData) => {
-    setUserInfo(userData);
-  };
+  }, [updateUserInfo]);
 
   function logout() {
     fetch("http://localhost:4000/logout", {
@@ -31,6 +35,7 @@ const Header = () => {
     setUserInfo(null);
     navigate("/"); // Redirect to the login page
   }
+
 
   const email = userInfo?.email;
 
@@ -119,9 +124,7 @@ const Header = () => {
                   Make Post
                 </Link>
 
-                <a className="mobilenavlinks" onClick={logout}>
-                  Logout
-                </a>
+                <button className="navLinksBtn" onClick={logout}>Logout</button>
               </>
             ) : (
               <>
@@ -224,16 +227,16 @@ const Header = () => {
                 <>
                   <Link to="/createPost">Make Post</Link>
 
-                  <a className="navlinks" onClick={logout}>
+                  <button className="navLinksBtn" onClick={logout}>
                     Logout
-                  </a>
+                  </button>
                 </>
               ) : (
                 <>
                   <Link to="/login" alt="Login">
                     Login
                   </Link>
-                  <Link to="/signup" alt="Signup" className="navlinks">
+                  <Link to="/signup" alt="Signup" className="navLinks">
                     Sign Up
                   </Link>
                 </>
