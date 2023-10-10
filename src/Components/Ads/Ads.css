@@ -1,0 +1,8 @@
+.adsTop {
+display: block;
+}
+
+.adsRight {
+    width: 100%;
+    object-fit: cover;
+}
