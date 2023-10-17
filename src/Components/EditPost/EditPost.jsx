@@ -11,7 +11,7 @@ const EditPost = () => {
   const [redirect, setRedirect] = useState(false); // Changed to false
 
   useEffect(() => {
-    fetch("santmagazine.onrender.com/post/" + id).then((response) => {
+    fetch("https://santmagazine.onrender.com/post/" + id).then((response) => {
       response.json().then((postInfo) => {
         setTitle(postInfo.title);
         setSummary(postInfo.summary);
@@ -27,19 +27,19 @@ const EditPost = () => {
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-    data.set('id', id)
+    data.set("id", id);
     if (files?.[0]) {
       data.set("file", files?.[0]);
     }
 
-    const response = await fetch("santmagazine.onrender.com/post/", {
+    const response = await fetch("https://santmagazine.onrender.com/post/", {
       method: "PUT",
       body: data,
-      credentials: 'include',
+      credentials: "include",
     });
-    if (response.ok){
-    setRedirect(true)
-  };
+    if (response.ok) {
+      setRedirect(true);
+    }
   };
 
   if (redirect) {

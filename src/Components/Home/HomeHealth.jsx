@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { formatISO9075 } from "date-fns";
-import './HomeHealth.css'
+import "./HomeHealth.css";
 
-const HomeHealth = ({ _id, title, summary, cover, content, createdAt, author }) => {
+const HomeHealth = ({
+  _id,
+  title,
+  summary,
+  cover,
+  content,
+  createdAt,
+  author,
+}) => {
   let date = new Date(); // Initialize with a default value
 
   if (typeof createdAt === "string" && !isNaN(Date.parse(createdAt))) {
@@ -16,7 +24,7 @@ const HomeHealth = ({ _id, title, summary, cover, content, createdAt, author }) 
 
   useEffect(() => {
     // Fetch posts in the "health" category from your backend
-    fetch("http://localhost:4000/health", {
+    fetch("https://santmagazine.onrender.com/post/health", {
       method: "GET",
       credentials: "include",
     })
@@ -38,7 +46,7 @@ const HomeHealth = ({ _id, title, summary, cover, content, createdAt, author }) 
             <Link to={`/post/${post._id}`}>
               <img
                 className="image"
-                src={`http://localhost:4000/${post.cover}`}
+                src={`https://santmagazine.onrender.com/post/${post.cover}`}
                 alt="cover"
               />
             </Link>

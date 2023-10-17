@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./ContentPage.css";
 import { FaPencilAlt } from "react-icons/fa";
-import { UserContext } from '../../UserContext';
+import { UserContext } from "../../UserContext";
 
 const ContentPage = () => {
   const [postInfo, setPostInfo] = useState(null);
@@ -10,7 +10,7 @@ const ContentPage = () => {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`santmagazine.onrender.com/post/${id}`)
+    fetch(`https://santmagazine.onrender.com/post/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -42,7 +42,7 @@ const ContentPage = () => {
         <div className="contentimg">
           <img
             className="contentimg"
-            src={`santmagazine.onrender.com/${postInfo.cover}`}
+            src={`https://santmagazine.onrender.com/${postInfo.cover}`}
             alt="cover"
           />
         </div>
