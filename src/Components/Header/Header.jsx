@@ -15,7 +15,7 @@ const Header = () => {
   );
 
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
+    fetch("santmagazine.onrender.com/profile", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -28,7 +28,7 @@ const Header = () => {
   }, [updateUserInfo]);
 
   function logout() {
-    fetch("http://localhost:4000/logout", {
+    fetch("santmagazine.onrender.com/logout", {
       credentials: "include",
       method: "POST",
     });

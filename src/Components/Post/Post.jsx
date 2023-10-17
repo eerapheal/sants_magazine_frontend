@@ -11,7 +11,7 @@ const Post = () => {
     // Move the fetch call to a separate useEffect to avoid infinite rendering
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/post");
+        const response = await fetch("santmagazine.onrender.com/post");
         if (response.ok) {
           const data = await response.json();
           if (Array.isArray(data)) {

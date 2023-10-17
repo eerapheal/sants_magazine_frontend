@@ -10,7 +10,7 @@ const SignUp = () => {
   const register = async (ev) => {
     ev.preventDefault();
 
-    const response = await fetch("http://localhost:4000/register", {
+    const response = await fetch("santmagazine.onrender.com/register", {
       method: "POST",
       body: JSON.stringify({ username, email, password }),
       headers: {
